@@ -1,31 +1,61 @@
-<a href="https://www.warp.dev">
-    <img width="1024" alt="Warp Agentic Development Environment product preview" src="https://github.com/user-attachments/assets/9976b2da-2edd-4604-a36c-8fd53719c6d4" />
-</a>
+# Wolf Terminal
 
-<p align="center">
-  <a href="https://www.warp.dev">Website</a>
-  ·
-  <a href="https://www.warp.dev/code">Code</a>
-  ·
-  <a href="https://www.warp.dev/agents">Agents</a>
-  ·
-  <a href="https://www.warp.dev/terminal">Terminal</a>
-  ·
-  <a href="https://www.warp.dev/drive">Drive</a>
-  ·
-  <a href="https://docs.warp.dev">Docs</a>
-  ·
-  <a href="https://www.warp.dev/blog/how-warp-works">How Warp Works</a>
-</p>
+A fork of [Warp](https://github.com/warpdotdev/warp) — personalized for Ellen Wolf's workflow, with the Mysteria Gradient theme, SuperSansMono font, and Wolf Workflow Kit pre-configured.
 
-> [!NOTE]
-> OpenAI is the founding sponsor of the new, open-source Warp repository, and the new agentic management workflows are powered by GPT models.
+## What's different from Warp OSS
 
-<h1></h1>
+- **Mysteria Gradient theme** (`themes/wolf.yaml`) — Superhuman brand palette, dark
+- **SuperSansMono font** — Superhuman brand monospace, bundled in `fonts/`
+- **Claude Code as default agent** — configured in `defaults/settings.toml`
+- **WFK install script** — `script/install-wfk.sh` sets up Wolf Workflow Kit skills, settings, and MCP stubs
 
-## About
+v2 (when Thomas commits): app name, dock icon, and in-app Warp → Wolf rebranding (requires Rust changes).
 
-[Warp](https://www.warp.dev) is an agentic development environment, born out of the terminal. Use Warp's built-in coding agent, or bring your own CLI agent (Claude Code, Codex, Gemini CLI, and others).
+## Requirements
+
+- macOS (Apple Silicon or Intel)
+- [Xcode](https://apps.apple.com/us/app/xcode/id497799835) — required to build Metal shaders
+- Rust (`curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`)
+
+## Build
+
+```bash
+git clone https://github.com/wolf-terminal/wolf.git
+cd wolf
+./script/bootstrap    # installs system deps (requires Xcode.app)
+cargo build
+```
+
+## First launch — macOS Gatekeeper
+
+Because Wolf is unsigned, macOS will block the first launch:
+
+1. Try to open Wolf — macOS shows "cannot be opened because the developer cannot be verified"
+2. Open **System Settings → Privacy & Security**
+3. Scroll down and click **"Allow Anyway"**
+4. Open Wolf again and click **Open**
+
+You only need to do this once.
+
+## WFK Setup
+
+After building, run the setup script to install Wolf Workflow Kit:
+
+```bash
+./script/install-wfk.sh
+```
+
+This installs WFK skills, Claude Code settings, and MCP stubs from the public
+[wolf-workflow-kit](https://github.com/ellenwolf0-hub/wolf-workflow-kit) repo.
+It never overwrites `~/.claude/settings.local.json` or your `LOCAL.md` files.
+
+## License
+
+AGPL v3 — see [LICENSE](LICENSE). Forked from [warpdotdev/warp](https://github.com/warpdotdev/warp).
+
+---
+
+## About Warp (upstream)
 
 ## Installation
 
