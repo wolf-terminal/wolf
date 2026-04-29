@@ -1,0 +1,24 @@
+# Wolf Terminal — Default Settings
+# Installed to ~/.warp-oss/settings.toml by script/install-wfk.sh
+#
+# TOML paths verified against Warp OSS source (v0.2026.04.29.08.56.stable_00)
+
+# --- Theme ---
+# Load wolf.yaml from ~/.warp-oss/themes/wolf.yaml
+# Path is relative to the themes directory; install-wfk.sh copies wolf.yaml there.
+[appearance.themes.theme]
+custom = { name = "Wolf", path = "wolf.yaml" }
+
+# --- Font ---
+# SuperSansMono is bundled in fonts/ and installed by install-wfk.sh.
+# Warp falls back to system monospace if the font isn't found.
+[appearance.text]
+font_name = "SuperSansMono"
+font_size = 13.0
+
+# --- CLI Agent (Claude Code) ---
+# Show the rich input toolbar when a CLI agent (e.g. claude) is running.
+# Auto-toggle closes rich input when Claude Code needs direct keyboard interaction.
+[agents.third_party]
+should_render_cli_agent_toolbar = true
+auto_toggle_composer = true

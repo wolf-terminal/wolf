@@ -1,0 +1,47 @@
+# Wolf Terminal Theme
+# Brand: Superhuman — Mysteria Gradient direction
+# Colors grounded in Brand Standards v0.5 (Heart, Mysteria, Wisteria, Cloud palettes)
+
+# --- Background ---
+# Gradient: Mysteria 800 (#3E2240) → Deep tone (#241013)
+background:
+  top: "#3E2240"
+  bottom: "#241013"
+
+# --- Foreground ---
+# Cloud 100 — warm off-white, primary brand light surface
+foreground: "#FCFAF7"
+
+# --- Accent ---
+# Gradient: Cloud Soft (#857DFA) → Wisteria (#D6D3FE)
+# Used for UI highlights, active states, selections
+accent:
+  left: "#857DFA"
+  right: "#D6D3FE"
+
+# --- Details level ---
+# "lighter" surfaces UI chrome against the dark background
+details: "lighter"
+
+# --- Terminal Color Palette ---
+# All 16 ANSI colors mapped to Superhuman brand palette
+# Normal = working colors; Bright = vivid/emphasis variants
+terminal_colors:
+  normal:
+    black:   "#241013"   # Deep tone — true black equivalent
+    red:     "#c45c70"   # Rose/maroon derived from Heart territory — errors
+    green:   "#44C2A0"   # Super tone teal — success, additions
+    yellow:  "#FF7723"   # Super tone orange — warnings, highlights
+    blue:    "#857DFA"   # Cloud Soft — info, links
+    magenta: "#8445E2"   # Mysteria 500 — special, prompts
+    cyan:    "#B2CFFE"   # Brand midtone blue — secondary info
+    white:   "#cec9e8"   # Muted Wisteria-adjacent — regular text
+  bright:
+    black:   "#4E3050"   # Lifted Mysteria — visible dark
+    red:     "#FFBDBE"   # Brand midtone pink — bright errors
+    green:   "#7dd9c2"   # Lighter teal — bright success
+    yellow:  "#FFD4A0"   # Warm light — bright warnings
+    blue:    "#D6D3FE"   # Wisteria — bright info, active
+    magenta: "#ED6EFA"   # Super pink — bright special
+    cyan:    "#D4E9FF"   # Lightest blue — bright secondary
+    white:   "#FCFAF7"   # Cloud 100 — pure bright white

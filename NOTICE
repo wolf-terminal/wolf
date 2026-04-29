@@ -1,0 +1,24 @@
+Wolf Terminal
+=============
+
+Wolf Terminal is a fork of Warp (https://github.com/warpdotdev/warp).
+
+The Warp application source code is licensed under the GNU Affero General
+Public License v3.0 (AGPL-3.0). See LICENSE-AGPL for the full license text.
+
+The warpui_core and warpui crates are licensed under the MIT License.
+See LICENSE-MIT for the full license text.
+
+Original copyright: Warp Dev Inc. and contributors.
+
+Wolf-specific additions (themes/wolf.yaml, defaults/settings.toml,
+fonts/SuperSansMono-*.otf, script/install-wfk.sh) are provided under
+the same AGPL-3.0 terms as the rest of this repository.
+
+Wolf Workflow Kit (installed by script/install-wfk.sh) is sourced from
+https://github.com/ellenwolf0-hub/wolf-workflow-kit and is subject to
+its own license terms.
+
+SuperSansMono is a typeface by Superhuman/Grammarly. Font files bundled
+in fonts/ are for use with Wolf Terminal only and are not licensed for
+redistribution outside of this project.
