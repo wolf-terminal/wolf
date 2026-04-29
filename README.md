@@ -26,6 +26,14 @@ cd wolf
 cargo build
 ```
 
+## First launch — Warp account required
+
+Wolf v1 is built on Warp's open-source codebase, which uses Warp's authentication system. You'll need a free Warp account to sign in on first launch.
+
+1. Create a free account at [warp.dev](https://warp.dev) if you don't have one
+2. On first launch, sign in with your Warp credentials
+3. You only need to do this once — Wolf stores your session
+
 ## First launch — macOS Gatekeeper
 
 Because Wolf is unsigned, macOS will block the first launch:
