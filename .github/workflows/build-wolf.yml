@@ -55,7 +55,7 @@ jobs:
 
       - name: Build Wolf
         run: |
-          cargo build --target ${{ inputs.arch || 'aarch64' }}-apple-darwin 2>&1
+          cargo build --bin warp-oss --target ${{ inputs.arch || 'aarch64' }}-apple-darwin 2>&1
         env:
           CARGO_INCREMENTAL: "1"
 
@@ -63,7 +63,7 @@ jobs:
         run: |
           ARCH="${{ inputs.arch || 'aarch64' }}"
           mkdir -p wolf-bin
-          cp target/${ARCH}-apple-darwin/debug/warp wolf-bin/wolf
+          cp target/${ARCH}-apple-darwin/debug/warp-oss wolf-bin/wolf
           chmod +x wolf-bin/wolf
           tar -czf wolf-macos-${ARCH}.tar.gz -C wolf-bin wolf
 
