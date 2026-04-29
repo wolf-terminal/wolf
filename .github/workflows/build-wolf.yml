@@ -1,0 +1,75 @@
+name: Build Wolf Terminal (macOS)
+
+on:
+  workflow_dispatch:
+    inputs:
+      arch:
+        description: "Target architecture"
+        required: true
+        default: "aarch64"
+        type: choice
+        options:
+          - aarch64
+          - x86_64
+
+jobs:
+  build:
+    name: Build Wolf (${{ inputs.arch || 'aarch64' }}-apple-darwin)
+    runs-on: macos-15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        run: |
+          rustup toolchain install 1.92.0 --profile minimal
+          rustup default 1.92.0
+          rustup target add ${{ inputs.arch || 'aarch64' }}-apple-darwin
+
+      - name: Install system dependencies
+        run: |
+          brew install pkgconf llvm
+
+      - name: Set up Xcode
+        run: |
+          sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
+
+      - name: Cache Cargo registry
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+          key: ${{ runner.os }}-${{ inputs.arch || 'aarch64' }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ inputs.arch || 'aarch64' }}-cargo-
+
+      - name: Cache build artifacts
+        uses: actions/cache@v4
+        with:
+          path: target
+          key: ${{ runner.os }}-${{ inputs.arch || 'aarch64' }}-build-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ inputs.arch || 'aarch64' }}-build-
+
+      - name: Build Wolf
+        run: |
+          cargo build --target ${{ inputs.arch || 'aarch64' }}-apple-darwin 2>&1
+        env:
+          CARGO_INCREMENTAL: "1"
+
+      - name: Package binary
+        run: |
+          ARCH="${{ inputs.arch || 'aarch64' }}"
+          mkdir -p wolf-bin
+          cp target/${ARCH}-apple-darwin/debug/warp wolf-bin/wolf
+          chmod +x wolf-bin/wolf
+          tar -czf wolf-macos-${ARCH}.tar.gz -C wolf-bin wolf
+
+      - name: Upload binary artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: wolf-macos-${{ inputs.arch || 'aarch64' }}
+          path: wolf-macos-${{ inputs.arch || 'aarch64' }}.tar.gz
+          retention-days: 14
