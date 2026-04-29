@@ -27,7 +27,7 @@ print_warn() { echo "   ⚠ $1"; }
 confirm() {
   local prompt="$1"
   read -rp "   ? ${prompt} [y/N] " answer
-  [[ "${answer,,}" == "y" ]]
+  [[ "$(echo "$answer" | tr '[:upper:]' '[:lower:]')" == "y" ]]
 }
 
 # ─────────────────────────────────────────────
