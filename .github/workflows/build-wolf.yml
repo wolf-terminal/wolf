@@ -55,7 +55,7 @@ jobs:
 
       - name: Build Wolf
         run: |
-          cargo build --bin warp-oss --target ${{ inputs.arch || 'aarch64' }}-apple-darwin 2>&1
+          cargo build --bin warp-oss --features skip_login --target ${{ inputs.arch || 'aarch64' }}-apple-darwin 2>&1
         env:
           CARGO_INCREMENTAL: "1"
 
