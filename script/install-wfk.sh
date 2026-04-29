@@ -273,24 +273,30 @@ fi
 print_step "Installing Wolf terminal settings"
 
 SETTINGS_TOML_SRC="${WOLF_REPO_DIR}/defaults/settings.toml"
+WOLF_THEME_PATH="${HOME}/.warp-oss/themes/wolf.yaml"
 mkdir -p "$(dirname "${WARP_OSS_SETTINGS}")"
 
 if [ ! -f "${SETTINGS_TOML_SRC}" ]; then
   print_warn "defaults/settings.toml not found in Wolf repo"
 else
+  # Substitute the real home-directory path for the theme file — Warp's theme
+  # map keys use full absolute paths, so the settings.toml must match exactly.
+  GENERATED_SETTINGS=$(sed "s|WOLF_THEME_PATH_PLACEHOLDER|${WOLF_THEME_PATH}|g" "${SETTINGS_TOML_SRC}")
+
   if [ -f "${WARP_OSS_SETTINGS}" ]; then
-    if diff -q "${SETTINGS_TOML_SRC}" "${WARP_OSS_SETTINGS}" &>/dev/null; then
+    EXISTING=$(cat "${WARP_OSS_SETTINGS}")
+    if [ "${GENERATED_SETTINGS}" = "${EXISTING}" ]; then
       print_skip "settings.toml already up to date"
     else
       if confirm "~/.warp-oss/settings.toml exists and differs. Overwrite with Wolf defaults?"; then
-        cp "${SETTINGS_TOML_SRC}" "${WARP_OSS_SETTINGS}"
+        echo "${GENERATED_SETTINGS}" > "${WARP_OSS_SETTINGS}"
         print_ok "settings.toml installed"
       else
         print_skip "settings.toml update skipped"
       fi
     fi
   else
-    cp "${SETTINGS_TOML_SRC}" "${WARP_OSS_SETTINGS}"
+    echo "${GENERATED_SETTINGS}" > "${WARP_OSS_SETTINGS}"
     print_ok "settings.toml installed to ${WARP_OSS_SETTINGS}"
   fi
 fi

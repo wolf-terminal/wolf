@@ -4,10 +4,10 @@
 # TOML paths verified against Warp OSS source (v0.2026.04.29.08.56.stable_00)
 
 # --- Theme ---
-# Load wolf.yaml from ~/.warp-oss/themes/wolf.yaml
-# Path is relative to the themes directory; install-wfk.sh copies wolf.yaml there.
+# Path must be the full absolute path — Warp stores full paths in its theme map key.
+# install-wfk.sh writes this file with the actual home directory substituted in.
 [appearance.themes.theme]
-custom = { name = "Wolf", path = "wolf.yaml" }
+Custom = { name = "Wolf", path = "WOLF_THEME_PATH_PLACEHOLDER" }
 
 # --- Font ---
 # SuperSansMono is bundled in fonts/ and installed by install-wfk.sh.
