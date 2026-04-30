@@ -8,11 +8,11 @@ background:
   bottom: "#1A0B20"
 
 # --- Foreground ---
-# Cloud 100 — warm off-white
-foreground: "#FCFAF7"
+# Pale lavender — readable on dark bg, clearly in the purple family
+foreground: "#E8DFFF"
 
 # --- Accent ---
-# Cloud Soft → Wisteria
+# Wisteria → Cloud Soft
 accent:
   left: "#857DFA"
   right: "#D6D3FE"
@@ -26,17 +26,17 @@ terminal_colors:
     black:   "#1A0B20"
     red:     "#FF6B81"
     green:   "#44C2A0"
-    yellow:  "#FF7723"
+    yellow:  "#FFA040"
     blue:    "#857DFA"
-    magenta: "#8445E2"
-    cyan:    "#B2CFFE"
-    white:   "#FCFAF7"
+    magenta: "#C97EF0"
+    cyan:    "#C4BAFF"
+    white:   "#E8DFFF"
   bright:
     black:   "#5C2D66"
     red:     "#FFBDBE"
-    green:   "#7dd9c2"
+    green:   "#7DD9C2"
     yellow:  "#FFD4A0"
     blue:    "#D6D3FE"
     magenta: "#ED6EFA"
-    cyan:    "#D4E9FF"
+    cyan:    "#DDD8FF"
     white:   "#FFFFFF"
